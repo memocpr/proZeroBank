@@ -22,7 +22,7 @@ public abstract class BasePage {
 
         driver.findElement(By.xpath(tabLocator)).click();
 
-
     }
+
 
 }

@@ -8,7 +8,12 @@ import java.util.List;
 public class AccountSummaryPage extends BasePage{
 
 
-    @FindBy(xpath = "//div/div/div[3]/div/table/thead/tr/th")
+    @FindBy(xpath = "//tr/th")
     public List<WebElement> creditAccountColumns;
+
+    @FindBy(css = ".board-header")
+    public List<WebElement> accountTypes;
+
+
 
 }

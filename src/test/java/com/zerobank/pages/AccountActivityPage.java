@@ -12,13 +12,17 @@ import java.util.List;
 public class AccountActivityPage extends BasePage {
 
 
-    @FindBy(css = "#aa_accountId")
+    @FindBy(css = "select[id*='_account']")
     public WebElement accountDropdown;
 
-    @FindBy(xpath = "//div[2]/table/thead/tr/th")
+    @FindBy(xpath = "//th")
     public List<WebElement> tableColumns;
 
-    @FindBy(css = "#sp_payee")
-    public WebElement payeeDropdown;
+    public List<String> getColumnNames(){
+
+       return BrowserUtils.getElementsText(tableColumns);
+
+    }
+
 
 }

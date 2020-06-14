@@ -30,10 +30,7 @@ public class FindTransactionsStepDef {
         System.out.println("###################################");
     }
 
-    @When("the user enters description “ONLINE”")
-    public void the_user_enters_description_ONLINE() {
-        System.out.println("###################################");
-    }
+
 
     @Then("results table should only show descriptions containing “ONLINE” When the user enters description “OFFICE”")
     public void results_table_should_only_show_descriptions_containing_ONLINE_When_the_user_enters_description_OFFICE() {

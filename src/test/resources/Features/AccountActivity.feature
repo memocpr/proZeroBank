@@ -8,7 +8,7 @@ Feature: Account activity
   Scenario: Dropdown default option
     Then the dropdown option should be "Savings"
 
-  @wip
+
   Scenario Outline: Account dropdown options <accountType>
     Then account dropdown have following options "<accountType>"
     Examples:
@@ -21,14 +21,14 @@ Feature: Account activity
       | Brokerage   |
 
 
-  Scenario Outline: Payee dropdown options <payeeType>
-    When  payee dropdown have following options "<payeeType>"
-    Examples:
-      | payeeType       |
-      | Sprint          |
-      | Bank of America |
-      | Apple           |
-      | Wells Fargo     |
+  Scenario: verify column names
+    Then the table should have column names
+      | Date        |
+      | Description |
+      | Deposit     |
+      | Withdrawal  |
+
+
 
 
 
