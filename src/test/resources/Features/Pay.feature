@@ -36,7 +36,7 @@ Feature: Pay Bills
       | Wells Fargo     | Credit Card |
       | Wells Fargo     | Brokerage   |
 
-  @wip
+
   Scenario Outline: Unsuccesful payment <invalidType>
     When the user enter the variable "<amount>" and "<date>"
     Then the alert should be displayed "Please fill in this field."

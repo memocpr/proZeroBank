@@ -1,6 +1,7 @@
 package com.zerobank.step_definitions;
 
 import com.zerobank.pages.LoginPage;
+import com.zerobank.utilities.BrowserUtils;
 import com.zerobank.utilities.Driver;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -17,6 +18,8 @@ public class Hooks {
 
         loginPage.signIn();
         loginPage.loginDirect();
+
+        BrowserUtils.waitFor(2);
     }
 
     @After

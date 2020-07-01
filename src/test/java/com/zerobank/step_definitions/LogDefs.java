@@ -13,7 +13,7 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-public class LoginStepDefs {
+public class LogDefs {
 
     // BEFORE RUN COMMIT THE LOGIN METHODS IN THE HOOKS !!!
 
@@ -36,12 +36,21 @@ public class LoginStepDefs {
         Assert.assertEquals(expectedTitle,Driver.get().getTitle());
     }
 
-    @Then("the message:Login and\\/or password are wrong should be displayed")
-    public void theMessageLoginAndOrPasswordAreWrongShouldBeDisplayed() {
 
+    @When("user enter following credendial {string} and {string}")
+    public void user_enter_following_credendial_and(String invalidUsername, String invalidPassword) {
+
+        loginPage.login(invalidUsername,invalidPassword);
+
+    }
+
+
+    @Then("the message:Login or password are wrong should be displayed")
+    public void the_message_Login_or_password_are_wrong_should_be_displayed() {
         WebElement alert = Driver.get().findElement(By.xpath("//div[normalize-space()='Login and/or password are wrong.']"));
         String actualMessage=alert.getText();
         String expectedMessage="Login and/or password are wrong.";
         Assert.assertEquals(expectedMessage,actualMessage);
     }
+
 }

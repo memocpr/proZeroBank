@@ -2,7 +2,7 @@ package com.zerobank.step_definitions;
 
 
 
-import com.zerobank.pages.AccountSummaryPage;
+import com.zerobank.pages.AccSumaryPage;
 import com.zerobank.utilities.BrowserUtils;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Then;
@@ -13,9 +13,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class AccountSummaryStepDef2 {
+public class AcSummaryDef2 {
 
-    AccountSummaryPage accountSummaryPage=new AccountSummaryPage();
+    AccSumaryPage accSumaryPage =new AccSumaryPage();
 
     @Then("the page should have to following account types {string}")
     public void the_page_should_have_to_following_account_typesXXXXX(String accountType, DataTable dataTable) {
@@ -30,7 +30,7 @@ public class AccountSummaryStepDef2 {
         }
 
         // 2. Step
-        List<String> actualList= BrowserUtils.getElementsText(accountSummaryPage.accountTypes);
+        List<String> actualList= BrowserUtils.getElementsText(accSumaryPage.accountTypes);
         Assert.assertEquals(expectedList,actualList);
 
         //3.Step
@@ -38,10 +38,10 @@ public class AccountSummaryStepDef2 {
         for (int i = 0; i < mapsAccount.size(); i++) {
              expectedColumns.add(mapsAccount.get(i).get(accountType));
         }
-        List<String> actualColumns=BrowserUtils.getElementsText(accountSummaryPage.creditAccountColumns);
+        List<String> actualColumns=BrowserUtils.getElementsText(accSumaryPage.creditAccountColumns);
 
 
-//        Assert.assertEquals(expectedColumns,actualColumns);
+        Assert.assertEquals(expectedColumns,actualColumns);
 
 
     }

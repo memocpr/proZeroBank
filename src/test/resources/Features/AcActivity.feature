@@ -20,13 +20,15 @@ Feature: Account activity
       | Credit Card |
       | Brokerage   |
 
-
   Scenario: verify column names
     Then the table should have column names
       | Date        |
       | Description |
       | Deposit     |
       | Withdrawal  |
+
+
+
 
 
 

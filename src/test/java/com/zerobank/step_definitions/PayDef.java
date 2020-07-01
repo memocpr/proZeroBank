@@ -1,27 +1,23 @@
 package com.zerobank.step_definitions;
 
-import com.zerobank.pages.AccountActivityPage;
-import com.zerobank.pages.PayBillPage;
-import com.zerobank.utilities.BrowserUtils;
+import com.zerobank.pages.AcActivityPage;
+import com.zerobank.pages.PayPage;
 import com.zerobank.utilities.Driver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-public class PayBillStepDef {
+public class PayDef {
 
 
-    PayBillPage payBillPage=new PayBillPage();
-    Select payeeSelect=new Select(payBillPage.payeeDropdown);
+    PayPage payPage =new PayPage();
+    Select payeeSelect=new Select(payPage.payeeDropdown);
 
-    AccountActivityPage accountActivityPage=new AccountActivityPage();
-    Select accountSelect=new Select(accountActivityPage.accountDropdown);
+    AcActivityPage acActivityPage =new AcActivityPage();
+    Select accountSelect=new Select(acActivityPage.accountDropdown);
 
 
     @When("the user select a {string}")
@@ -47,7 +43,7 @@ public class PayBillStepDef {
     public void the_user_enter_amount(Integer amountInt) {
         String amountStr = amountInt.toString();
 
-        payBillPage.inputBoxes("amount").sendKeys(amountStr);
+        payPage.inputBoxes("amount").sendKeys(amountStr);
 
     }
 
@@ -55,7 +51,7 @@ public class PayBillStepDef {
     public void the_user_enter_date(Integer year, Integer month, Integer day) {
         String dateStr = year.toString()+month.toString()+day.toString();
 
-        payBillPage.inputBoxes("date").sendKeys(dateStr);
+        payPage.inputBoxes("date").sendKeys(dateStr);
 
     }
 
@@ -63,14 +59,14 @@ public class PayBillStepDef {
     @And("the user enters description {string}")
     public void theUserEntersDescription(String description)  {
 
-        payBillPage.inputBoxes("description").sendKeys(description+Keys.ENTER);
+        payPage.inputBoxes("description").sendKeys(description+Keys.ENTER);
 
     }
 
     @Then("the message should be shown {string}")
     public void theMessageShouldBeShown(String expectedMessage) {
 
-        String actualMessage = payBillPage.successMessage.getText();
+        String actualMessage = payPage.successMessage.getText();
 
         Assert.assertEquals(expectedMessage,actualMessage);
 
@@ -89,16 +85,16 @@ public class PayBillStepDef {
     @When("the user enter the variable {string} and {string}")
     public void the_user_enter_the_variable_and(String amount, String date) {
 
-        payBillPage.inputBoxes("amount").sendKeys(amount);
+        payPage.inputBoxes("amount").sendKeys(amount);
 
-        payBillPage.inputBoxes("date").sendKeys(date);
+        payPage.inputBoxes("date").sendKeys(date);
 
     }
 
     @Then("the alert should be displayed {string}")
     public void the_alert_should_be_displayed(String expectedAlert) {
 
-        payBillPage.payBtn.click();
+        payPage.payBtn.click();
 
         String actualAlert = Driver.get().switchTo().activeElement().getAttribute("validationMessage");
 

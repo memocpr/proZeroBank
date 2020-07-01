@@ -1,23 +1,21 @@
 package com.zerobank.step_definitions;
 
-import com.zerobank.pages.AccountActivityPage;
+import com.zerobank.pages.AcActivityPage;
+import com.zerobank.pages.AccSumaryPage;
 import com.zerobank.utilities.BrowserUtils;
-import com.zerobank.utilities.Driver;
-import io.cucumber.java.bs.A;
 import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
-public class AccountActivityStepDef {
+public class AcActivityDef {
 
-    AccountActivityPage accountActivityPage=new AccountActivityPage();
-    Select accountSelect=new Select(accountActivityPage.accountDropdown);
+    AccSumaryPage accSumaryPage =new AccSumaryPage();
+
+    AcActivityPage acActivityPage =new AcActivityPage();
+    Select accountSelect=new Select(acActivityPage.accountDropdown);
 
 
 
@@ -42,19 +40,26 @@ public class AccountActivityStepDef {
 
     @Then("account dropdown have following options {string}")
     public void account_dropdown_have_following_options(String expectedOptions) {
-
         accountSelect.selectByVisibleText(expectedOptions);
-
     }
-
 
     @Then("the table should have column names")
     public void theTableShouldHaveColumnNames(List<String> expectedColumns) {
 
-        List<String> actualColumns = accountActivityPage.getColumnNames();
+        List<String> actualColumns = acActivityPage.getColumnNames();
 
         Assert.assertEquals(expectedColumns,actualColumns);
 
-
     }
+
+    @Then("account dropdown should have {string} option selected")
+    public void account_dropdown_should_have_option_selected(String expectedOption) {
+
+        String actualOption=accountSelect.getFirstSelectedOption().getText();
+
+        Assert.assertEquals(expectedOption,actualOption);
+    }
+
+
+
 }
